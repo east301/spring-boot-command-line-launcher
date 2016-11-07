@@ -50,7 +50,7 @@ publish {
     userOrg = 'east301-dev'
     groupId = 'net.east301.sbcll'
     artifactId = 'sbcll'
-    publishVersion = "0.0.1-SNAPSHOT"
+    publishVersion = "0.0.1"
     desc = 'spring-boot-command-line-launcher'
     website = 'https://github.com/east301/spring-boot-command-line-launcher'
 }

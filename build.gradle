@@ -1,0 +1,56 @@
+///
+/// Build script for spring-boot-command-line-launcher project.
+///
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.4.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.4'
+    }
+}
+
+
+// ================================================================================
+// Kotlin
+// ================================================================================
+
+apply plugin: 'kotlin'
+
+group = 'net.east301.sbcll'
+version = '0.0.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile     'org.springframework.boot:spring-boot-starter:1.4.1.RELEASE'
+    compile     'org.jetbrains.kotlin:kotlin-stdlib:1.0.4'
+    compile     'net.sourceforge.argparse4j:argparse4j:0.7.0'
+}
+
+
+// ================================================================================
+// IDE support
+// ================================================================================
+
+apply plugin: 'idea'
+
+
+// ================================================================================
+// publish
+// ================================================================================
+
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'east301-dev'
+    groupId = 'net.east301.sbcll'
+    artifactId = 'sbcll'
+    publishVersion = "0.0.1-SNAPSHOT"
+    desc = 'spring-boot-command-line-launcher'
+    website = 'https://github.com/east301/spring-boot-command-line-launcher'
+}

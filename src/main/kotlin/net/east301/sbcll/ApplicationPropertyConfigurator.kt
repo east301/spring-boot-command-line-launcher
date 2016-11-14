@@ -31,6 +31,6 @@ interface ApplicationPropertyConfigurator {
      * @param args          command line arguments
      * @param properties    application properties
      */
-    fun configureApplicationProperties(args: Namespace, properties: Map<String, Any>)
+    fun configureApplicationProperties(args: Namespace, properties: MutableMap<String, Any>)
 
 }

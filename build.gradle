@@ -20,7 +20,7 @@ buildscript {
 apply plugin: 'kotlin'
 
 group = 'net.east301.sbcll'
-version = '0.0.0-SNAPSHOT'
+version = '0.0.3-SNAPSHOT'
 
 repositories {
     jcenter()
@@ -50,7 +50,7 @@ publish {
     userOrg = 'east301-dev'
     groupId = 'net.east301.sbcll'
     artifactId = 'sbcll'
-    publishVersion = "0.0.2"
+    publishVersion = "0.0.3"
     desc = 'spring-boot-command-line-launcher'
     website = 'https://github.com/east301/spring-boot-command-line-launcher'
 }

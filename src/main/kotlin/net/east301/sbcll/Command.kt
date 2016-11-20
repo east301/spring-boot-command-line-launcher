@@ -31,10 +31,9 @@ interface Command : ApplicationBuilderConfigurator, ApplicationPropertyConfigura
     /**
      * Configures command line parser.
      *
-     * @param subparsers    sub-parsers
-     * @return registered command IDs
+     * @param parserFactory parserFactory
      */
-    fun configureCommandLineParser(subparsers: Subparsers): Collection<String>
+    fun configureCommandLineParser(parserFactory: ParserFactory)
 
     /**
      * Runs application logic.

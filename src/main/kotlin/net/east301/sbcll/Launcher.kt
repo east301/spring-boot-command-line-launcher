@@ -39,7 +39,7 @@ open class Launcher {
         val commands = HashSet<String>()
 
         override fun addParser(command: String): Subparser {
-            this.commands.addAll(command)
+            this.commands.add(command)
             return this.subparsers.addParser(command)
         }
 

@@ -19,8 +19,11 @@ import net.sourceforge.argparse4j.ArgumentParsers
 import net.sourceforge.argparse4j.inf.ArgumentParser
 import net.sourceforge.argparse4j.inf.ArgumentParserException
 import net.sourceforge.argparse4j.inf.Namespace
+import net.sourceforge.argparse4j.inf.Subparser
+import net.sourceforge.argparse4j.inf.Subparsers
 import org.springframework.boot.builder.SpringApplicationBuilder
 import java.util.HashMap
+import java.util.HashSet
 import java.util.ServiceLoader
 
 
@@ -30,6 +33,17 @@ import java.util.ServiceLoader
  * @author Shu Tadaka
  */
 open class Launcher {
+
+    private class ParserFactoryImpl(private val subparsers: Subparsers) : ParserFactory {
+
+        val commands = HashSet<String>()
+
+        override fun addParser(command: String): Subparser {
+            this.commands.addAll(commands)
+            return this.subparsers.addParser(command)
+        }
+
+    }
 
     companion object {
 
@@ -70,7 +84,10 @@ open class Launcher {
 
         val commands = HashMap<String, Command>()
         ServiceLoader.load(Command::class.java).forEach { command ->
-            command.configureCommandLineParser(subparsers).forEach {
+            val parserFactory = ParserFactoryImpl(subparsers)
+            command.configureCommandLineParser(parserFactory)
+
+            parserFactory.commands.forEach {
                 commands[it] = command
             }
         }
